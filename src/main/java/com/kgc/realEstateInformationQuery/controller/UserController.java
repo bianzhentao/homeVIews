@@ -37,7 +37,8 @@ public class UserController {
     @RequestMapping(value = "verify.do",method = RequestMethod.POST,produces="text/html;charset=utf-8")
     @ResponseBody
     public String verify(Model model,@RequestParam("cardid") String cardid,@RequestParam("password") String password,HttpServletResponse response){
-        Users users= usersService.selectUsers(cardid);
+        Users users= new Users();
+        users=usersService.selectUsers(cardid);
         if(users==null){
             return "<script>alert('该账号不存在，请先注册！');location.href='login.do';</script>";
         }else if(!users.getPassword().equals(password)){

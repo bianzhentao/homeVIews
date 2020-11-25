@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kgc.realEstateInformationQuery.mapper.RealEstateMapper" >
+  <resultMap id="BaseResultMap" type="com.kgc.realEstateInformationQuery.pojo.RealEstate" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="cardId" property="cardid" jdbcType="VARCHAR" />
+    <result column="projectName" property="projectname" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="houseType" property="housetype" jdbcType="VARCHAR" />
+    <result column="area" property="area" jdbcType="INTEGER" />
+    <result column="buildTime" property="buildtime" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, cardId, projectName, address, houseType, area, buildTime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.kgc.realEstateInformationQuery.pojo.RealEstateExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from real_estate
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from real_estate
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from real_estate
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.kgc.realEstateInformationQuery.pojo.RealEstateExample" >
+    delete from real_estate
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.kgc.realEstateInformationQuery.pojo.RealEstate" >
+    insert into real_estate (id, cardId, projectName, 
+      address, houseType, area, 
+      buildTime)
+    values (#{id,jdbcType=BIGINT}, #{cardid,jdbcType=VARCHAR}, #{projectname,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{housetype,jdbcType=VARCHAR}, #{area,jdbcType=INTEGER}, 
+      #{buildtime,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kgc.realEstateInformationQuery.pojo.RealEstate" >
+    insert into real_estate
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="cardid != null" >
+        cardId,
+      </if>
+      <if test="projectname != null" >
+        projectName,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="housetype != null" >
+        houseType,
+      </if>
+      <if test="area != null" >
+        area,
+      </if>
+      <if test="buildtime != null" >
+        buildTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="cardid != null" >
+        #{cardid,jdbcType=VARCHAR},
+      </if>
+      <if test="projectname != null" >
+        #{projectname,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="housetype != null" >
+        #{housetype,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        #{area,jdbcType=INTEGER},
+      </if>
+      <if test="buildtime != null" >
+        #{buildtime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.kgc.realEstateInformationQuery.pojo.RealEstateExample" resultType="java.lang.Integer" >
+    select count(*) from real_estate
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update real_estate
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.cardid != null" >
+        cardId = #{record.cardid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectname != null" >
+        projectName = #{record.projectname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null" >
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.housetype != null" >
+        houseType = #{record.housetype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.area != null" >
+        area = #{record.area,jdbcType=INTEGER},
+      </if>
+      <if test="record.buildtime != null" >
+        buildTime = #{record.buildtime,jdbcType=DATE},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update real_estate
+    set id = #{record.id,jdbcType=BIGINT},
+      cardId = #{record.cardid,jdbcType=VARCHAR},
+      projectName = #{record.projectname,jdbcType=VARCHAR},
+      address = #{record.address,jdbcType=VARCHAR},
+      houseType = #{record.housetype,jdbcType=VARCHAR},
+      area = #{record.area,jdbcType=INTEGER},
+      buildTime = #{record.buildtime,jdbcType=DATE}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kgc.realEstateInformationQuery.pojo.RealEstate" >
+    update real_estate
+    <set >
+      <if test="cardid != null" >
+        cardId = #{cardid,jdbcType=VARCHAR},
+      </if>
+      <if test="projectname != null" >
+        projectName = #{projectname,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="housetype != null" >
+        houseType = #{housetype,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        area = #{area,jdbcType=INTEGER},
+      </if>
+      <if test="buildtime != null" >
+        buildTime = #{buildtime,jdbcType=DATE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kgc.realEstateInformationQuery.pojo.RealEstate" >
+    update real_estate
+    set cardId = #{cardid,jdbcType=VARCHAR},
+      projectName = #{projectname,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      houseType = #{housetype,jdbcType=VARCHAR},
+      area = #{area,jdbcType=INTEGER},
+      buildTime = #{buildtime,jdbcType=DATE}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

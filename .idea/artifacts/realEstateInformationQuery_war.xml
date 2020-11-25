@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="realEstateInformationQuery:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>realEstateInformationQuery</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="realEstateInformationQuery.war">
+      <element id="artifact" artifact-name="realEstateInformationQuery:war exploded" />
+    </root>
+  </artifact>
+</component>

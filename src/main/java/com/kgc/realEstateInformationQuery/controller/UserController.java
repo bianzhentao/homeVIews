@@ -37,8 +37,7 @@ public class UserController {
     @RequestMapping(value = "verify.do",method = RequestMethod.POST,produces="text/html;charset=utf-8")
     @ResponseBody
     public String verify(Model model,@RequestParam("cardid") String cardid,@RequestParam("password") String password,HttpServletResponse response){
-        Users users= new Users();
-        users=usersService.selectUsers(cardid);
+        Users users= usersService.selectUsers(cardid);
         if(users==null){
             return "<script>alert('该账号不存在，请先注册！');location.href='login.do';</script>";
         }else if(!users.getPassword().equals(password)){
@@ -68,7 +67,8 @@ public class UserController {
     @RequestMapping(value = "addUsers.do",method = RequestMethod.POST,produces="text/html;charset=utf-8")
     @ResponseBody
     public String addUsers(@RequestParam("cardid") String cardid,@RequestParam("name") String name,@RequestParam("password") String password){
-        int i =usersService.addUsers(cardid, name, password);
+        int i =0;
+        i=usersService.addUsers(cardid, name, password);
         if(i>0){
             return "<script>var result=confirm('注册已成功,现在去登陆吗？');if(result==true){location.href='login.do';}else{location.href='register.do';}</script>";
         }else{

@@ -11,4 +11,5 @@ import com.kgc.realEstateInformationQuery.pojo.RealEstate;
 public interface RealEstateService {
     public PageInfo<RealEstate> selectUsers(String cardid, Integer pageNum, Integer pageSize);
 
+
 }

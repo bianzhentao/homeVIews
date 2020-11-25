@@ -68,7 +68,8 @@ public class UserController {
     @RequestMapping(value = "addUsers.do",method = RequestMethod.POST,produces="text/html;charset=utf-8")
     @ResponseBody
     public String addUsers(@RequestParam("cardid") String cardid,@RequestParam("name") String name,@RequestParam("password") String password){
-        int i = usersService.addUsers(cardid, name, password);
+        int i =0;
+        i=usersService.addUsers(cardid, name, password);
         if(i>0){
             return "<script>var result=confirm('注册已成功,现在去登陆吗？');if(result==true){location.href='login.do';}else{location.href='register.do';}</script>";
         }else{

@@ -1,6 +1,7 @@
 package com.kgc.realEstateInformationQuery.test;
 
 import com.kgc.realEstateInformationQuery.pojo.RealEstate;
+import com.kgc.realEstateInformationQuery.pojo.Users;
 import com.kgc.realEstateInformationQuery.service.RealEstateService;
 import com.kgc.realEstateInformationQuery.service.UsersService;
 import org.junit.Test;
@@ -25,5 +26,8 @@ public class Test01 {
     UsersService usersService;
     @Test
     public void test01(){
+        Users users=new Users();
+        users=usersService.selectUsers("412826199807123113");
+        System.out.println(users.toString());
     }
 }

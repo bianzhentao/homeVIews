@@ -54,3 +54,4 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
 2020-11-21 18:19:24[ERROR](DruidAbstractDataSource.java:1004) maxIdle is deprecated
 2020-11-21 18:21:54[ERROR](DruidAbstractDataSource.java:1004) maxIdle is deprecated
 2020-11-21 18:22:23[ERROR](DruidAbstractDataSource.java:1004) maxIdle is deprecated
+2020-11-25 18:45:07[ERROR](DruidAbstractDataSource.java:1004) maxIdle is deprecated

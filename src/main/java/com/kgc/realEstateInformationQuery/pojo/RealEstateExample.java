@@ -12,6 +12,7 @@ public class RealEstateExample {
 
     protected List<Criteria> oredCriteria;
 
+
     public RealEstateExample() {
         oredCriteria = new ArrayList<Criteria>();
     }

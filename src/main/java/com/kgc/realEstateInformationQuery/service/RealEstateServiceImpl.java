@@ -23,6 +23,7 @@ public class RealEstateServiceImpl implements RealEstateService {
     @Resource
     RealEstateMapper realEstateMapper;
 
+
     @Override
     public PageInfo<RealEstate> selectUsers(String cardid, Integer pageNum, Integer pageSize) {
         //设置当前页和页容量

@@ -17,6 +17,8 @@ public class RealEstate {
 
     private Integer area;
 
+    private String das;
+
     @JsonFormat(pattern="yyyy-MM-dd")
     private Date buildtime;
 
@@ -43,7 +45,6 @@ public class RealEstate {
     public void setProjectname(String projectname) {
         this.projectname = projectname == null ? null : projectname.trim();
     }
-
     public String getAddress() {
         return address;
     }

@@ -22,6 +22,7 @@ public class Users {
         return cardid;
     }
 
+
     public void setCardid(String cardid) {
         this.cardid = cardid == null ? null : cardid.trim();
     }

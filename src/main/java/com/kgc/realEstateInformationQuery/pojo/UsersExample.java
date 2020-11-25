@@ -32,6 +32,7 @@ public class UsersExample {
         return distinct;
     }
 
+
     public List<Criteria> getOredCriteria() {
         return oredCriteria;
     }

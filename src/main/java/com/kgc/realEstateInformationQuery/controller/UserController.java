@@ -86,7 +86,9 @@ public class UserController {
             dqy=Integer.parseInt(pageNum);
         }
         name=name.equals("null")||name.equals("")?"%%":"%"+name+"%";
-        List<Users> usersList = usersService.getUsersList(name);
+        List<Users> usersList =new ArrayList<>();
+        usersList= usersService.getUsersList(name);
+
         Integer pageSize=5;//一页几条数据
         PageInfo<RealEstate> pageInfo =realEstateService.selectUsers(cardid,dqy,pageSize);
         List<RealEstate> list=new ArrayList<>();//创建对象的list集合
